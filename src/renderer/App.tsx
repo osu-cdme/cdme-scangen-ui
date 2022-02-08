@@ -1,49 +1,37 @@
-import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
-import icon from '../../assets/icon.svg';
-import './App.css';
+// Imports
+import {
+  MemoryRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom';
 
-const Hello = () => {
-  return (
-    <div>
-      <div className="Hello">
-        <img width="200px" alt="icon" src={icon} />
-      </div>
-      <h1>electron-react-boilerplate</h1>
-      <div className="Hello">
-        <a
-          href="https://electron-react-boilerplate.js.org/"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">
-            <span role="img" aria-label="books">
-              📚
-            </span>
-            Read our docs
-          </button>
-        </a>
-        <a
-          href="https://github.com/sponsors/electron-react-boilerplate"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <button type="button">
-            <span role="img" aria-label="books">
-              🙏
-            </span>
-            Donate
-          </button>
-        </a>
-      </div>
-    </div>
-  );
-};
+// Components
+import Universal from './Universal/Universal';
+import Generate from './Generate/Generate';
+import View from './View/View';
+import IO from './IO/IO';
+import Optimize from './Optimize/Optimize';
+
+// Styling
+import './App.scss';
+
+// Clear console each time we launch
+// eslint-disable-next-line no-console
+console.clear();
 
 export default function App() {
+  const DEFAULT_ROUTE = 'generate';
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Hello />} />
+        <Route path="/" element={<Universal />}>
+          <Route path="" element={<Navigate to={DEFAULT_ROUTE} />} />
+          <Route path="generate" element={<Generate />} />
+          <Route path="view" element={<View />} />
+          <Route path="io" element={<IO />} />
+          <Route path="optimize" element={<Optimize />} />
+        </Route>
       </Routes>
     </Router>
   );

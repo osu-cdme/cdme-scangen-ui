@@ -1,0 +1,52 @@
+// This file has styles applied to every page
+
+@import 'Universal/variables.scss';
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $background-gray;
+}
+
+// Navbar
+nav {
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  background-color: $main-red;
+
+  img,
+  ul,
+  li {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  img {
+    width: 50px;
+    height: 50px;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 0;
+    li {
+      a {
+        display: block;
+        height: 100%;
+        padding: 0 20px;
+        line-height: 50px;
+
+        font-size: 1.1rem;
+        color: white;
+        text-decoration: none;
+      }
+    }
+    li:hover {
+      background-color: lighten($main-red, 5%);
+    }
+    li.selected {
+      background-color: darken($main-red, 10%) !important;
+    }
+  }
+}
